@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:00:10 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 11:16:31 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:11:56 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ static void	reverse_rotate(t_stack *stack)
 	stack->numbers[stack->top] = aux;
 }
 
-void	ra(t_stack *stack_a)
+void	rra(t_stack *stack_a)
 {
 	reverse_rotate(stack_a);
 	ft_printf("rra\n");
 }
 
-void	rb(t_stack *stack_b)
+void	rrb(t_stack *stack_b)
 {
 	reverse_rotate(stack_b);
 	ft_printf("rrb\n");
 }
 
-void	rr(t_stack *stack_a)
+void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);

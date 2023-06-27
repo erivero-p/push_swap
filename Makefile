@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRC_DIR = src/
-SRC = main.c check_arg.c manage_stacks.c swap.c push.c rotate.c reverse_rotate.c
+SRC = main.c check_arg.c manage_stacks.c swap.c push.c rotate.c reverse_rotate.c sort_few.c
 OBJ_DIR = objs/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

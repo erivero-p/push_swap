@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 13:42:11 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/26 15:21:37 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:08:59 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	swap(t_stack *stack)
 	int	c;
 
 	c = stack->numbers[stack->top - 1];
-	stack->numbers[stack->top - 1] = stacka->numbers[stacka->top];
+	stack->numbers[stack->top - 1] = stack->numbers[stack->top];
 	stack->numbers[stack->top] = c;
 }
 

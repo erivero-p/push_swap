@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:45:50 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 11:15:57 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:10:49 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rb(t_stack *stack_b)
 	ft_printf("rb\n");
 }
 
-void	rr(t_stack *stack_a)
+void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

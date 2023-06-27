@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:42:06 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 11:14:04 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:24:17 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ static bool	check_rep(char **av, int i)
 	int	j;
 
 	j = 0;
-	while (j++ < i)
+	while (j < i)
 	{
-		if (av[j] == av[i])
+		if (ft_atoi(av[j]) == ft_atoi(av[i])) //paso por atoi pq no se puede hacer comparación directa de strings
 			return (false);
+		j++;
 	}
 	return (true);
 }
@@ -54,7 +55,7 @@ bool	check_args(char **av)
 	{
 		if (!is_number(av[i]))
 			return (false);
-		if (!(ft_atoi(av[i]) > INT_MIN && ft_atoi(av[i] < INT_MAX)))
+		if (!(ft_atoi(av[i]) > INT_MIN && ft_atoi(av[i]) < INT_MAX))
 			return (false);
 		if (!check_rep(av, i))
 			return (false);
