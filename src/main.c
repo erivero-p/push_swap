@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 16:25:03 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:36:54 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ int	main(int ac, char **av)
 	stack_b = init_stack_b();
 	if (stack_a->size < 7)
 		sort_few(stack_a, stack_b);
+	ft_print_stack(stack_a);
 }

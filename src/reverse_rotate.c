@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 16:00:10 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 16:11:56 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:13:30 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	reverse_rotate(t_stack *stack)
 	int	aux;
 
 	aux = stack->numbers[0];
-	i = stack->top;
-	while (i >= 0)
+	i = 0;
+	while (i < stack->top)
 	{
-		stack->numbers[i - 1] = stack->numbers[i];
-		i--;
+		stack->numbers[i] = stack->numbers[i + 1];
+		i++;
 	}
 	stack->numbers[stack->top] = aux;
 }

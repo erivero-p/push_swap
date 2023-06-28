@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:55:26 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 16:08:21 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/28 10:58:39 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ t_stack	*init_stack_a(char **av)
 	stack_a->top = -1; // -1 y no 0 para poder empezar sumando en top. Si sumo al final y no al principio, voy a estar sumando uno de más, aunque no lo rellene.
 	stack_a->size = array_len(av);
 	i = stack_a->size - 1;
-	while (av[stack_a->top])
+// Necesito un iterador porque si uso while(av[stack_a->top]) hago una iteración de más
+	while (i >= 0)
 	{
+//		ft_printf("top is %i\n", stack_a->top);
+
 		stack_a->top++;
 		stack_a->numbers[stack_a->top] = ft_atoi(av[i]);
 		i--;
 	}
+//	ft_printf("finally top is %i\n", stack_a->top);
+
 	return (stack_a);
 }
 
