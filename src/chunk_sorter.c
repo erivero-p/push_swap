@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sorter_pb.c                                    :+:      :+:    :+:   */
+/*   chunk_sorter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:14:43 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/30 12:41:21 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:54:59 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ int	chunk_size(t_stack *stack_a)
 		if (stack_a->max < stack_a->numbers[len])
 			stack_a->max = stack_a->numbers[len];
 		if (stack_a->start > stack_a->numbers[len])
-			stack_a->start = stacK_a->numbers[len];
+			stack_a->start = stack_a->numbers[len];
 	}
-	size = stack_a->max - start + 1;
+	size = stack_a->max - stack_a->start + 1;
+/* 	ft_printf("start: %i\n", stack_a->start);
+	ft_printf("max: %i\n", stack_a->max);
+	ft_printf("size: %i\n", size); */
 	return (size);
 }
 
@@ -45,9 +48,10 @@ int	chunk_check(t_stack *stack_a, int start, int end)
 	return (0);
 }
 
-int	top_cost(t_stack *stack_a)
+int	top_cost(t_stack *stack_a, int start, int end)
 {
 	int	len;
+	int	top_cost;
 
 	len = stack_a->top;
 	while (len >= 0)
@@ -64,7 +68,7 @@ void	chunk_sort(t_stack *stack_a, int start, int end)
 {
 	int	cost;
 
-	if (chunk_check(stack_a, start, end) < top_cost(stack_a))
+	if (chunk_check(stack_a, start, end) < top_cost(stack_a, start, end))
 	{
 		cost = chunk_check(stack_a, start, end);
 		while (cost-- > 0)
@@ -72,30 +76,35 @@ void	chunk_sort(t_stack *stack_a, int start, int end)
 	}
 	else
 	{
-		cost = top_cost(stack_a);
+		cost = top_cost(stack_a, start, end);
 		while (cost-- > 0)
 			ra(stack_a);
 	}
 }
 
-void	big_sorter_pb(t_stack *stack_a, t_stack *stack_b)
+
+void	push_chunks(t_stack *stack_a, t_stack *stack_b)
 {
 	int	start;
 	int	end;
 	int	size;
-	int	cost;
 
 	start = stack_a->start;
-	size = chunk_size(numbers) / 5; // tengo que arreglar esto
+	size = chunk_size(stack_a) / 5; // tengo que arreglar esto
 	end = start + size;
-	while (end <= stack_a->max)
+	while (stack_b->top >= 0)
 	{
-		if (chunk_check(stack_a, start, end))
+		if(chunk_check(stack_a, start, end))
 		{
-			chunk_sort(stack_a);
-			pb
+			chunk_sort(stack_a, start, end);
+//			ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
+			pb(stack_a, stack_b);
 		}
-		start = end + 1;
-		end += size;
+		else
+		{
+			start = end + 1;
+			end = start + size;
+		}
+		ft_printf("CAMBIO DE CHUNK\nstart: %i\nend: %i\n", start, end);
 	}
 }

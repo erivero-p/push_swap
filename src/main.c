@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:36:54 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:51:38 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 
 	if (ac < 2)
-		ft_error();
+		return (0);
 	if (ac == 2)
 		bid = ft_split(av[1], 32);
 	else
@@ -48,5 +48,12 @@ int	main(int ac, char **av)
 	stack_b = init_stack_b();
 	if (stack_a->size < 7)
 		sort_few(stack_a, stack_b);
+	else
+	{
+		push_chunks(stack_a, stack_b);
+		ft_print_stack(stack_b);
+		ft_printf("AAAAAAAAAAAAAAA");
+//		big_sorter(stack_a, stack_b);
+	}
 	ft_print_stack(stack_a);
 }

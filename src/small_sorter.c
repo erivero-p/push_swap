@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_few.c                                         :+:      :+:    :+:   */
+/*   small_sorter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:57:18 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/28 12:56:35 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/06/30 17:04:25 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	sort_smallest(t_stack *stack_a, t_stack *stack_b)
 		while (pos-- >= 0)
 			rra(stack_a);
 	}
+//	ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
 	pb(stack_a, stack_b);
 }
 
@@ -75,6 +76,11 @@ void	sort_five(t_stack *stack_a, t_stack *stack_b)
 
 void	sort_few(t_stack *stack_a, t_stack *stack_b)
 {
+	if (stack_a->size == 2)
+	{
+		if (stack_a->numbers[1] > stack_a->numbers[0])
+			sa(stack_a);
+	}
 	if (stack_a->size == 3)
 		sort_three(stack_a);
 	if (stack_a->size == 4)
@@ -85,7 +91,7 @@ void	sort_few(t_stack *stack_a, t_stack *stack_b)
 	}
 	if (stack_a->size == 5)
 		sort_five(stack_a, stack_b);
-	else
+	if (stack_a->size > 5)
 	{
 		sort_smallest(stack_a, stack_b);
 		sort_five(stack_a, stack_b);

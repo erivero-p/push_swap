@@ -10,8 +10,9 @@ typedef struct s_stack
 	int	numbers[1024]; //max que puede ocupar un array
 	int	top; // esto va a ir variando
 	int	size; // esto es fijo (count + 1)
+// dará problema por no inicializarlas cuando no las uso? en números pequeños
 	int	start; // el número más pequeño y start del chunk
-	int	max; // el número más grande y fin del último chunk
+//	int	max; // el número más grande y fin del último chunk
 
 } t_stack;
 
@@ -31,6 +32,8 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	sort_few(t_stack *stack_a, t_stack *stack_b);
 void	ft_error(void);
+void	push_chunks(t_stack *stack_a, t_stack *stack_b);
+void	big_sorter(t_stack *stack_a, t_stack *stack_b);
 
 
 
