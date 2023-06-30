@@ -10,6 +10,8 @@ typedef struct s_stack
 	int	numbers[1024]; //max que puede ocupar un array
 	int	top; // esto va a ir variando
 	int	size; // esto es fijo (count + 1)
+	int	start; // el número más pequeño y start del chunk
+	int	max; // el número más grande y fin del último chunk
 
 } t_stack;
 
