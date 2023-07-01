@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:14:43 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:54:59 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:45:09 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ int	chunk_size(t_stack *stack_a)
 {
 	int	len;
 	int	size;
+	int	max;
 
-	stack_a->max = stack_a->numbers[0];
-	stack_a->start = stack_a->max;
+	max = stack_a->numbers[0];
+	stack_a->start = max;
 	len = stack_a->top;
-	while (len-- > 0)
+	while (len > 0)
 	{
-		if (stack_a->max < stack_a->numbers[len])
-			stack_a->max = stack_a->numbers[len];
+		if (max < stack_a->numbers[len])
+			max = stack_a->numbers[len];
 		if (stack_a->start > stack_a->numbers[len])
 			stack_a->start = stack_a->numbers[len];
+		len--;
 	}
-	size = stack_a->max - stack_a->start + 1;
+	size = max - stack_a->start + 1;
 /* 	ft_printf("start: %i\n", stack_a->start);
-	ft_printf("max: %i\n", stack_a->max);
+	ft_printf("max: %i\n", max);
 	ft_printf("size: %i\n", size); */
 	return (size);
 }
@@ -92,8 +94,9 @@ void	push_chunks(t_stack *stack_a, t_stack *stack_b)
 	start = stack_a->start;
 	size = chunk_size(stack_a) / 5; // tengo que arreglar esto
 	end = start + size;
-	while (stack_b->top >= 0)
+	while (stack_a->top >= 0)
 	{
+//		ft_printf("a ver");
 		if(chunk_check(stack_a, start, end))
 		{
 			chunk_sort(stack_a, start, end);
@@ -105,6 +108,6 @@ void	push_chunks(t_stack *stack_a, t_stack *stack_b)
 			start = end + 1;
 			end = start + size;
 		}
-		ft_printf("CAMBIO DE CHUNK\nstart: %i\nend: %i\n", start, end);
+//		ft_printf("CAMBIO DE CHUNK\nstart: %i\nend: %i\n", start, end);
 	}
 }

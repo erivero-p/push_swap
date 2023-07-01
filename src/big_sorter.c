@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 16:58:38 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:47:07 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:14:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    big_sorter(t_stack *stack_a, t_stack *stack_b)
 {
 	int biggest_pos;
 	
-	if (stack_b->top >= 0)
+	while (stack_b->top >= 0)
 	{
 		biggest_pos = find_max_position(stack_b);
 		if (biggest_pos >= stack_a->top / 2)
@@ -48,7 +48,7 @@ void    big_sorter(t_stack *stack_a, t_stack *stack_b)
 			while (biggest_pos-- >= 0)
 				rrb(stack_a);
 		}
-		// ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
+		ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
 		pa(stack_a, stack_b);
 	}
 }
