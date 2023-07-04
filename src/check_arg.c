@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:42:06 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/27 16:24:17 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:02:45 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ bool	check_args(char **av)
 		if (!check_rep(av, i))
 			return (false);
 		i++;
+	}
+	return (true);
+}
+
+bool	check_order(t_stack	*stack_a)
+{
+	int	i;
+
+	i = stack_a->top;
+	while (i > 0)
+	{
+		if (stack_a->numbers[i] > stack_a->numbers[i - 1])
+			return (false);
+		i--;
 	}
 	return (true);
 }

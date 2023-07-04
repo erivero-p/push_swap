@@ -34,5 +34,7 @@ void	sort_few(t_stack *stack_a, t_stack *stack_b);
 void	ft_error(void);
 void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count);
 void	big_sorter(t_stack *stack_a, t_stack *stack_b, int stack_count);
+bool	check_order(t_stack	*stack_a);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/04 17:15:27 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:05:18 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ int	main(int ac, char **av)
 		ft_error();
 	stack_a = init_stack_a(bid);
 	stack_b = init_stack_b();
-	if (stack_a->size < 7)
-		sort_few(stack_a, stack_b);
-	else if (stack_a->size <= 100)
-		big_sorter(stack_a, stack_b, 5);
-	else
-		big_sorter(stack_a, stack_b, 11);
+	if (!check_order(stack_a))
+	{
+		if (stack_a->size < 7)
+			sort_few(stack_a, stack_b);
+		else if (stack_a->size <= 100)
+			big_sorter(stack_a, stack_b, 5);
+		else
+			big_sorter(stack_a, stack_b, 11);
+	}
 //	ft_print_stack(stack_a);
 }
