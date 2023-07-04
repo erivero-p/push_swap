@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/02 13:31:48 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:15:27 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void ft_print_stack(t_stack *stack)
+/* void	ft_print_stack(t_stack *stack)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ void ft_print_stack(t_stack *stack)
 		ft_printf("La posición %i es: %i\n", i, stack->numbers[i]);
 		i--;
 	}
-}
+} */
 
 int	main(int ac, char **av)
 {
@@ -48,12 +48,9 @@ int	main(int ac, char **av)
 	stack_b = init_stack_b();
 	if (stack_a->size < 7)
 		sort_few(stack_a, stack_b);
+	else if (stack_a->size <= 100)
+		big_sorter(stack_a, stack_b, 5);
 	else
-	{
-		push_chunks(stack_a, stack_b);
-		ft_print_stack(stack_b);
-		ft_printf("AAAAAAAAAAAAAAA\n");
-		big_sorter(stack_a, stack_b);
-	}
-	ft_print_stack(stack_a);
+		big_sorter(stack_a, stack_b, 11);
+//	ft_print_stack(stack_a);
 }

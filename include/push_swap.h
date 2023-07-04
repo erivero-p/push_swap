@@ -32,12 +32,7 @@ void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	sort_few(t_stack *stack_a, t_stack *stack_b);
 void	ft_error(void);
-void	push_chunks(t_stack *stack_a, t_stack *stack_b);
-void	big_sorter(t_stack *stack_a, t_stack *stack_b);
-
-
-
-
-
+void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count);
+void	big_sorter(t_stack *stack_a, t_stack *stack_b, int stack_count);
 
 #endif

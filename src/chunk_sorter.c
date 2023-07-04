@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:14:43 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/01 17:45:09 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/04 16:52:17 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,14 @@ void	chunk_sort(t_stack *stack_a, int start, int end)
 	}
 }
 
-
-void	push_chunks(t_stack *stack_a, t_stack *stack_b)
+void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count)
 {
 	int	start;
 	int	end;
 	int	size;
 
 	start = stack_a->start;
-	size = chunk_size(stack_a) / 5; // tengo que arreglar esto
+	size = chunk_size(stack_a) / stack_count;
 	end = start + size;
 	while (stack_a->top >= 0)
 	{
