@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:55:26 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/28 10:58:39 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:27:56 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,40 @@ t_stack	*init_stack_b(void)
 	stack_b->top = -1; //para ir al 0 cuando empiece a pushear
 	stack_b->size = 0;
 	return (stack_b);
+}
+
+void	ft_error(int ac, char **arr)
+{
+	ft_printf("Error\n");
+	if (ac == 2)
+	{
+		ptr = arr;
+		while (*ptr)
+		{
+			free(*ptr);
+			ptr++;
+		}
+		free(arr);	
+	}
+	exit(EXIT_FAILURE);
+}
+
+static void	ft_free(int ac, char **arr, t_stack stack_a, t_stack stack_b)
+{
+	char	**ptr;
+
+	if (ac == 2)
+	{
+		ptr = arr;
+		while (*ptr)
+		{
+			free(*ptr);
+			ptr++;
+		}
+		free(arr);
+	}
+	free(stack_a);
+	free(stack_b);
+	exit(EXIT_SUCCESS);
 }
 
