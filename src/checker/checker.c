@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:10:22 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 15:14:59 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/06 19:12:09 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* strncmp devuelve un entero con la diferencia de caracteres,
 si las dos strings son iguales, da 0 
 Uso strNcmp porque juraría que strcmp no está en libft */
-static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
+static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b, int ac, char **arr)
 {
 	if (!ft_strncmp(inst, "sa\n", 3))
 		chk_sa(stack_a);
@@ -24,9 +24,9 @@ static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
 	else if (!ft_strncmp(inst, "ss\n", 3))
 		chk_ss(stack_a, stack_b);
 	else if (!ft_strncmp(inst, "pa\n", 3))
-		chk_pa(stack_a);
+		chk_pa(stack_a, stack_b);
 	else if (!ft_strncmp(inst, "pb\n", 3))
-		chk_pb(stack_b);
+		chk_pb(stack_a, stack_b);
 	else if (!ft_strncmp(inst, "ra\n", 3))
 		chk_ra(stack_a);
 	else if (!ft_strncmp(inst, "rb\n", 3))
@@ -40,16 +40,16 @@ static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
 	else if (!ft_strncmp(inst, "rrr\n", 4))
 		chk_rrr(stack_a, stack_b);
 	else
-		ft_error();
+		ft_error(ac, arr);
 }
-void read_instructions(t_stack *stack_a, t_stack *stack_b)
+void read_instructions(t_stack *stack_a, t_stack *stack_b, int ac, char **arr)
 {
 	char *inst;
 
 	inst = get_next_line(0);
 	while (inst)
 	{
-		make_instructions(inst, stack_a, stack_b);
+		make_instructions(inst, stack_a, stack_b, ac, arr);
 		inst = get_next_line(0);
 	}
 }
@@ -64,7 +64,7 @@ bool sort_check(t_stack *stack_a)
 	while (i > 0)
 	{
 		if (num[i] > num[i - 1])
-			return (false) // están mal ordenados
+			return (false); // están mal ordenados
 		i--;
 	}
 	return (true);	
@@ -72,23 +72,24 @@ bool sort_check(t_stack *stack_a)
 
 int main (int ac, char **av)
 {
-    char	**bid;
+    char	**arr;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	if (ac < 2)
 		return (0);
 	if (ac == 2)
-		bid = ft_split(av[1], 32);
+		arr = ft_split(av[1], 32);
 	else
-		bid = av + 1;
-	if (!check_args(bid))
-		ft_error();
-	stack_a = init_stack_a(bid);
+		arr = av + 1;
+	if (!check_args(arr))
+		ft_error(ac, arr);
+	stack_a = init_stack_a(arr);
 	stack_b = init_stack_b();
-	read_instructions(stack_a, stack_b);
+	read_instructions(stack_a, stack_b, ac, arr);
 	if (sort_check(stack_a) && stack_b->top < 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	ft_free(ac, arr, stack_a, stack_a);
 }

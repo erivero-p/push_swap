@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:55:26 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 18:27:56 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:50:22 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_stack	*init_stack_b(void)
 
 void	ft_error(int ac, char **arr)
 {
+	char	**ptr;
+
 	ft_printf("Error\n");
 	if (ac == 2)
 	{
@@ -73,7 +75,7 @@ void	ft_error(int ac, char **arr)
 	exit(EXIT_FAILURE);
 }
 
-static void	ft_free(int ac, char **arr, t_stack stack_a, t_stack stack_b)
+void	ft_free(int ac, char **arr, t_stack *stack_a, t_stack *stack_b)
 {
 	char	**ptr;
 

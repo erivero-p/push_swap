@@ -6,13 +6,11 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 18:27:49 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/06 18:42:12 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-
 
 /* void	ft_print_stack(t_stack *stack)
 {
@@ -51,6 +49,6 @@ int	main(int ac, char **av)
 		else
 			big_sorter(stack_a, stack_b, 11);
 	}
-	ft_free()
+	ft_free(ac, arr, stack_a, stack_a);
 //	ft_print_stack(stack_a);
 }

@@ -19,6 +19,8 @@ typedef struct s_stack
 bool	check_args(char **av);
 t_stack	*init_stack_a(char **av);
 t_stack	*init_stack_b(void);
+void	ft_error(int ac, char **arr);
+void	ft_free(int ac, char **arr, t_stack *stack_a, t_stack *stack_b);
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
@@ -31,7 +33,6 @@ void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	sort_few(t_stack *stack_a, t_stack *stack_b);
-void	ft_error(void);
 void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count);
 void	big_sorter(t_stack *stack_a, t_stack *stack_b, int stack_count);
 bool	check_order(t_stack	*stack_a);
