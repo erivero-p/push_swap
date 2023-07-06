@@ -36,5 +36,16 @@ void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count);
 void	big_sorter(t_stack *stack_a, t_stack *stack_b, int stack_count);
 bool	check_order(t_stack	*stack_a);
 
+void	chk_sa(t_stack *stack_a);
+void	chk_sb(t_stack *stack_b);
+void	chk_ss(t_stack *stack_a, t_stack *stack_b);
+void	chk_pa(t_stack *stack_a, t_stack *stack_b);
+void	chk_pb(t_stack *stack_a, t_stack *stack_b);
+void	chk_ra(t_stack *stack_a);
+void	chk_rb(t_stack *stack_b);
+void	chk_rr(t_stack *stack_a, t_stack *stack_b);
+void	chk_rra(t_stack *stack_a);
+void	chk_rrb(t_stack *stack_b);
+void	chk_rrr(t_stack *stack_a, t_stack *stack_b);
 
 #endif

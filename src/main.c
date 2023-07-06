@@ -6,16 +6,40 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/04 19:05:18 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/06 15:42:40 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_error(void)
+void	ft_error(char **str)
 {
-	ft_printf("Error");
+	ft_printf("Error\n");
+	if (!str)
+		return ;
+	ptr = str;
+	while (*ptr)
+	{
+		free(*ptr);
+		ptr++;
+	}
+	free(str);
 	exit(EXIT_FAILURE);
+}
+
+static void	ft_free(char **str)
+{
+	char	**ptr;
+
+	if (!str)
+		return ;
+	ptr = str;
+	while (*ptr)
+	{
+		free(*ptr);
+		ptr++;
+	}
+	free(str);
 }
 
 /* void	ft_print_stack(t_stack *stack)
