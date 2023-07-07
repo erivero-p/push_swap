@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:55:26 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 18:50:22 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:15:41 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_stack	*init_stack_b(void)
 	t_stack	*stack_b;
 
 	stack_b = malloc(sizeof(t_stack));
+	ft_printf("ALOHA\n");
 	stack_b->top = -1; //para ir al 0 cuando empiece a pushear
 	stack_b->size = 0;
 	return (stack_b);
@@ -70,7 +71,7 @@ void	ft_error(int ac, char **arr)
 			free(*ptr);
 			ptr++;
 		}
-		free(arr);	
+		free(arr);
 	}
 	exit(EXIT_FAILURE);
 }
@@ -79,6 +80,7 @@ void	ft_free(int ac, char **arr, t_stack *stack_a, t_stack *stack_b)
 {
 	char	**ptr;
 
+	(void) stack_b;
 	if (ac == 2)
 	{
 		ptr = arr;
@@ -90,7 +92,6 @@ void	ft_free(int ac, char **arr, t_stack *stack_a, t_stack *stack_b)
 		free(arr);
 	}
 	free(stack_a);
-	free(stack_b);
+//	free(stack_b);
 	exit(EXIT_SUCCESS);
 }
-

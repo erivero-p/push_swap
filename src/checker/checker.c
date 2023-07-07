@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:10:22 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 19:12:09 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:29:54 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* strncmp devuelve un entero con la diferencia de caracteres,
 si las dos strings son iguales, da 0 
 Uso strNcmp porque juraría que strcmp no está en libft */
-static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b, int ac, char **arr)
+static int	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
 {
 	if (!ft_strncmp(inst, "sa\n", 3))
 		chk_sa(stack_a);
@@ -40,21 +40,27 @@ static void	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b, in
 	else if (!ft_strncmp(inst, "rrr\n", 4))
 		chk_rrr(stack_a, stack_b);
 	else
-		ft_error(ac, arr);
+		return (0);
+	return (1);
 }
-void read_instructions(t_stack *stack_a, t_stack *stack_b, int ac, char **arr)
+
+static void	read_instructions(t_stack *stack_a,
+t_stack *stack_b, int ac, char **arr)
 {
-	char *inst;
+	char	*inst;
+	int		i;
 
 	inst = get_next_line(0);
 	while (inst)
 	{
-		make_instructions(inst, stack_a, stack_b, ac, arr);
+		i = make_instructions(inst, stack_a, stack_b);
+		if (i == 0)
+			ft_error(ac, arr);
 		inst = get_next_line(0);
 	}
 }
 
-bool sort_check(t_stack *stack_a)
+static bool	sort_check(t_stack *stack_a)
 {
 	int	*num;
 	int	i;
@@ -67,12 +73,12 @@ bool sort_check(t_stack *stack_a)
 			return (false); // están mal ordenados
 		i--;
 	}
-	return (true);	
+	return (true);
 }
 
-int main (int ac, char **av)
+int	main(int ac, char **av)
 {
-    char	**arr;
+	char	**arr;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 

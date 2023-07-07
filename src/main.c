@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 10:48:15 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 18:42:12 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/07 12:26:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	main(int ac, char **av)
 		else
 			big_sorter(stack_a, stack_b, 11);
 	}
-	ft_free(ac, arr, stack_a, stack_a);
+	ft_free(ac, arr, stack_a, stack_b);
 //	ft_print_stack(stack_a);
 }
