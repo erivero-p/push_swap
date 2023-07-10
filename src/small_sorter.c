@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 13:57:18 by erivero-          #+#    #+#             */
-/*   Updated: 2023/06/30 17:04:25 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:24:43 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sort_three(t_stack *stack_a)
 		rra(stack_a);
 	}
 }
+
 void	sort_smallest(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
@@ -52,18 +53,19 @@ void	sort_smallest(t_stack *stack_a, t_stack *stack_b)
 		i--;
 	}
 	if (pos >= stack_a->top / 2)
-	{ //< porque quiero llegar a top pero no cambiar top
+	{
 		while (pos++ < stack_a->top)
 			ra(stack_a);
 	}
 	else
-	{ // >= porque quiero llegar a 0 y cambiarlo
+	{
 		while (pos-- >= 0)
 			rra(stack_a);
 	}
-//	ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
 	pb(stack_a, stack_b);
 }
+/* while (pos++ < stack_a->top) < quiero llegar a top pero no cambiarlo
+while (pos-- >= 0) >= quiero llegar a 0 y cambiarlo */
 
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {

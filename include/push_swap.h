@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/10 16:10:22 by erivero-          #+#    #+#             */
+/*   Updated: 2023/07/10 16:10:23 by erivero-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -7,16 +19,20 @@
 
 typedef struct s_stack
 {
-	int	numbers[1024]; //max que puede ocupar un array
-	int	top; // esto va a ir variando
-	int	size; // esto es fijo (count + 1)
-// dará problema por no inicializarlas cuando no las uso? en números pequeños
-	int	start; // el número más pequeño y start del chunk
-//	int	max; // el número más grande y fin del último chunk
+	int	numbers[1024];
+	int	top;
+	int	size;
+	int	start;
+}	t_stack;
 
-} t_stack;
+/* La estructura contiene:
+- un array de enteros con el tamaño máximo que podría tener (1024)
+- top, que es la posición de arriba del todo de cada stack, y que irá variando
+- size, el tamaño total del array de enteros (top + 1)
+- start: el número más pequeño, servirá como start del primer chunk. */
 
 bool	check_args(char **av);
+bool	check_order(t_stack	*stack_a);
 t_stack	*init_stack_a(char **av);
 t_stack	*init_stack_b(void);
 void	ft_error(int ac, char **arr);

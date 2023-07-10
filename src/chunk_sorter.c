@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:14:43 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/04 16:52:17 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:17:49 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ int	chunk_size(t_stack *stack_a)
 		len--;
 	}
 	size = max - stack_a->start + 1;
-/* 	ft_printf("start: %i\n", stack_a->start);
-	ft_printf("max: %i\n", max);
-	ft_printf("size: %i\n", size); */
 	return (size);
 }
+/* Esta función busca a la vez el número más grande y el más pequeño del stack,
+devuelve la diferencia entre ambos, que será el "total de posibilidades"
+y guarda el más pequeño en la estructura, ya que lo necesitaré más adelante
+para usarlo como start del primer chunk */
 
 int	chunk_check(t_stack *stack_a, int start, int end)
 {
@@ -44,11 +45,15 @@ int	chunk_check(t_stack *stack_a, int start, int end)
 	while (i <= stack_a->top)
 	{
 		if (stack_a->numbers[i] >= start && stack_a->numbers[i] <= end)
-			return (i + 1); // el costo de ponerlo en top
+			return (i + 1);
 		i++;
 	}
 	return (0);
 }
+/* devuelve i + 1 porque, además de chequear que haya un número del chunk
+en el stack_a, devuelve el coste de ponerlo en top con reverse_rotate
+(para después pushearlo). Una vez llegue a 0, habría que hacer una rotación más 
+para ponerlo en top */
 
 int	top_cost(t_stack *stack_a, int start, int end)
 {
@@ -65,6 +70,8 @@ int	top_cost(t_stack *stack_a, int start, int end)
 	top_cost = stack_a->top - len;
 	return (top_cost);
 }
+/* el coste de poner algo en top será la 
+diferencia entre top y la posición del número*/
 
 void	chunk_sort(t_stack *stack_a, int start, int end)
 {
@@ -95,11 +102,9 @@ void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count)
 	end = start + size;
 	while (stack_a->top >= 0)
 	{
-//		ft_printf("a ver");
-		if(chunk_check(stack_a, start, end))
+		if (chunk_check(stack_a, start, end))
 		{
 			chunk_sort(stack_a, start, end);
-//			ft_printf("el número a pushear es: %i\n", stack_a->numbers[stack_a->top]);
 			pb(stack_a, stack_b);
 		}
 		else
@@ -107,6 +112,5 @@ void	push_chunks(t_stack *stack_a, t_stack *stack_b, int stack_count)
 			start = end + 1;
 			end = start + size;
 		}
-//		ft_printf("CAMBIO DE CHUNK\nstart: %i\nend: %i\n", start, end);
 	}
 }

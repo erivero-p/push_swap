@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:10:22 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/07 13:29:54 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:02:25 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 /* strncmp devuelve un entero con la diferencia de caracteres,
 si las dos strings son iguales, da 0 
-Uso strNcmp porque juraría que strcmp no está en libft */
+Uso strNcmp porque juraría que strcmp no está en libft
+Además, la función devuelve 1 si todo va bien, y 0 si la instrucción recibida
+no es ninguna de la lista. */
 static int	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
 {
 	if (!ft_strncmp(inst, "sa\n", 3))
@@ -43,6 +45,9 @@ static int	make_instructions(char *inst, t_stack *stack_a, t_stack *stack_b)
 		return (0);
 	return (1);
 }
+/* como tengo que llamar a ft_error si alguna instrucción está mal,
+además de recibir por parámetros los dos stacks, recibo ac y arr,
+que son los parámetros que recibe ft_error. */
 
 static void	read_instructions(t_stack *stack_a,
 t_stack *stack_b, int ac, char **arr)
@@ -58,22 +63,6 @@ t_stack *stack_b, int ac, char **arr)
 			ft_error(ac, arr);
 		inst = get_next_line(0);
 	}
-}
-
-static bool	sort_check(t_stack *stack_a)
-{
-	int	*num;
-	int	i;
-
-	num = stack_a->numbers;
-	i = stack_a->top;
-	while (i > 0)
-	{
-		if (num[i] > num[i - 1])
-			return (false); // están mal ordenados
-		i--;
-	}
-	return (true);
 }
 
 int	main(int ac, char **av)
@@ -93,9 +82,9 @@ int	main(int ac, char **av)
 	stack_a = init_stack_a(arr);
 	stack_b = init_stack_b();
 	read_instructions(stack_a, stack_b, ac, arr);
-	if (sort_check(stack_a) && stack_b->top < 0)
+	if (check_order(stack_a) && stack_b->top < 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
-	ft_free(ac, arr, stack_a, stack_a);
+	ft_free(ac, arr, stack_a, stack_b);
 }

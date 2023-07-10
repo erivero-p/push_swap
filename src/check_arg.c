@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 12:42:06 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/04 19:02:45 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:09:05 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static bool	is_number(char *num)
 	else
 		return (false);
 }
+/* Para comparar los números y comprobar que no sean iguales, 
+como no se pueden hacer comparaciones directas de dos strings, 
+puedo pasarlas por atoi (que es lo que hago en este caso) o usar strncmp */
 
 static bool	check_rep(char **av, int i)
 {
@@ -39,7 +42,7 @@ static bool	check_rep(char **av, int i)
 	j = 0;
 	while (j < i)
 	{
-		if (ft_atoi(av[j]) == ft_atoi(av[i])) //paso por atoi pq no se puede hacer comparación directa de strings
+		if (ft_atoi(av[j]) == ft_atoi(av[i]))
 			return (false);
 		j++;
 	}

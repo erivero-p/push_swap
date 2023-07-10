@@ -6,7 +6,7 @@
 /*   By: erivero- <erivero-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:14:07 by erivero-          #+#    #+#             */
-/*   Updated: 2023/07/06 11:33:19 by erivero-         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:25:26 by erivero-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ void	chk_rr(t_stack *stack_a, t_stack *stack_b)
 	rotate(stack_a);
 	rotate(stack_b);
 }
-
